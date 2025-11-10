@@ -22,11 +22,8 @@ import {
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import React, { useState } from "react"
-import { AddUser } from "@/components/admin/add-user"
-import { users as initialUsers } from "@/constants/users"
-import { User } from "@/types/user"
-import { toast } from "sonner"
+import { useState } from "react"
+
 import { Toaster } from "@/components/ui/sonner"
 
 interface DataTableProps<TData, TValue> {
@@ -131,7 +128,7 @@ export function DataTable<TData, TValue>({
                 </PaginationContent>
             </Pagination>
 
-            <Toaster position="top-center"/>
+            <Toaster position="top-center" />
         </div>
     )
 }

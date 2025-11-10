@@ -5,7 +5,8 @@ import { motion } from "motion/react"
 export default function Service() {
     return (
         <section id="services" className="bg-white py-16">
-            <div className="max-w-7xl mx-auto px-6">
+            <div
+                className="max-w-7xl mx-auto px-6">
                 <h2 className="text-3xl font-bold text-primary">Our Services</h2>
                 <p className="mt-2 text-slate-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <motion.div
@@ -42,5 +43,5 @@ export default function Service() {
                 </motion.div>
             </div>
         </section>
-        )
+    )
 }
