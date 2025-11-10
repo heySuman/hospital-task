@@ -43,8 +43,8 @@ export default function Home() {
                 visible: { opacity: 1 },
               }}
             >
-              <h1 className="text-4xl sm:text-5xl font-extrabold bg-linear-to-r to-slate-500 from-black text-transparent bg-clip-text">
-                We care about you.
+              <h1 className="text-4xl sm:text-5xl font-extrabold">
+                We <span className="text-primary">care</span> about you.
               </h1>
 
               <motion.p
