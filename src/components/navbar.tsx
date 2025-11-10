@@ -1,15 +1,21 @@
+"use client"
+
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { Hospital } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export default function NavBar() {
+export default function NavBar({ variant = "withLogin" }: { variant: "withLogout" | "withLogin" }) {
     const links = [
         { href: "#hero", label: "Home" },
         { href: "#services", label: "Services" },
         { href: "#about", label: "About" },
         { href: "#contact", label: "Contact" },
     ]
+
+    const router = useRouter();
+
     return (
         <header className="fixed inset-x-0 top-0 z-50">
             <motion.div
@@ -23,23 +29,29 @@ export default function NavBar() {
                         <Hospital />
                         <h1 className="text-2xl font-bold text-primary">Hospital</h1>
                     </div>
-                    <nav className="flex gap-6 items-center">
+                    {
+                        variant === "withLogin" && (
+                            <nav className="flex gap-6 items-center">
+                                {links.map((item) => (
+                                    <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        className="font-medium text-gray-700 hover:text-primary
+                           hover:underline underline-offset-4 transition duration-300 ease-in-out hidden sm:block"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
 
-                        {links.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="text-base font-medium text-gray-700 hover:text-primary
-                           hover:underline underline-offset-4 transition duration-300 ease-in-out hidden sm:visible"
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
-
-                        <Link href={'/login'}>
-                            <Button>Login</Button>
-                        </Link>
-                    </nav>
+                                <Button onClick={() => router.push("/login")}>Login</Button>
+                            </nav>)
+                    }
+                    {
+                        variant === "withLogout" &&
+                        <nav className="flex gap-6 items-center">
+                            <Button onClick={() => router.push("/")}>Logout</Button>
+                        </nav>
+                    }
                 </div>
             </motion.div>
         </header>

@@ -12,7 +12,7 @@ import Service from "@/components/landing-page/services";
 export default function Home() {
   return (
     <React.Fragment>
-      <NavBar />
+      <NavBar variant="withLogin"/>
       <main className="text-slate-800 ">
         <section
           id="hero"

@@ -43,17 +43,14 @@ export default function Login() {
     return (
         <main className="w-full h-screen grid items-center justify-center">
             <div>
-                <motion.div
-                    initial={{ y: -100 }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
+                <div
                     className="flex items-center p-4 my-6"
                 >
                     <div className="flex gap-2 items-center">
                         <Hospital />
                         <h1 className="text-2xl font-bold text-primary">Hospital</h1>
                     </div>
-                </motion.div>
+                </div>
                 <Card className="md:w-md max-w-md mx-auto border-none">
                     <CardHeader>
                         <CardTitle className="text-3xl text-primary">
