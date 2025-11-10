@@ -23,6 +23,11 @@ import { Pagination, PaginationContent, PaginationItem, PaginationNext, Paginati
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import React, { useState } from "react"
+import { AddUser } from "@/components/admin/add-user"
+import { users as initialUsers } from "@/constants/users"
+import { User } from "@/types/user"
+import { toast } from "sonner"
+import { Toaster } from "@/components/ui/sonner"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -52,7 +57,7 @@ export function DataTable<TData, TValue>({
 
     return (
         <div className="overflow-hidden">
-            <div className="flex items-center py-4">
+            <div className="flex items-center justify-between py-4">
                 <Input
                     placeholder="Search users"
                     value={(table.getState().globalFilter as string) ?? ""}
@@ -125,6 +130,8 @@ export function DataTable<TData, TValue>({
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
+
+            <Toaster position="top-center"/>
         </div>
     )
 }
