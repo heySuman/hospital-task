@@ -21,45 +21,57 @@ export default function Home() {
         >
           <motion.div
             className="max-w-7xl mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-10"
-            initial={{
-              x: -50,
-              opacity: 0
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                  delay: 1,
+                  staggerChildren: 1,
+                  delayChildren: 0.3,
+                },
+              },
             }}
-            animate={{
-              x: 0,
-              opacity: 1
-            }}
-            transition={{
-              staggerChildren: 0.3,
-              delayChildren: 1,
-              duration: 0.5,
-              ease: [0.42, 0, 0.58, 1]
-            }}
+            whileInView={"visible"}
+            viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div
               className="my-12 flex-1"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
             >
-              <h1
-                className="text-4xl sm:text-6xl font-extrabold bg-linear-to-r to-slate-500 from-black text-transparent bg-clip-text">
+              <h1 className="text-4xl sm:text-5xl font-extrabold bg-linear-to-r to-slate-500 from-black text-transparent bg-clip-text">
                 We care about you.
               </h1>
+
               <motion.p
-                className="my-8 text-lg max-w-1/2 bg-linear-to-r to-gray-600 from-black text-transparent bg-clip-text "
+                className="my-6 text-lg sm:max-w-1/2 bg-linear-to-r to-gray-600 from-black text-transparent bg-clip-text"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus soluta nobis architecto amet vitae, atque ratione beatae assumenda aut, vero quod qui nemo asperiores possimus.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum eaque modi non possimus? Quis reprehenderit nihil nisi quia voluptate. Laudantium autem sunt sint possimus!
               </motion.p>
+
               <motion.div
                 className="mt-8 flex gap-4"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
-                <Button size={"extra-large"}>
-                  Our Services
-                </Button>
+                <Button size={"extra-large"}>Our Services</Button>
                 <Button size={"extra-large"} variant={"secondary"}>
                   Book Appointment
                 </Button>
               </motion.div>
             </motion.div>
-
           </motion.div>
         </section>
 
@@ -68,23 +80,34 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Our Services</h2>
             <p className="mt-2 text-slate-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
             <motion.div
-              initial={{
-                y: -50,
-                opacity: 0
+              className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    delay: 1,
+                    ease: "easeInOut",
+                    staggerChildren: 0.2,
+                    delayChildren: 0.1,
+                  },
+                },
               }}
-              animate={{
-                y: 0,
-                opacity: 1
-              }}
-              transition={{
-                duration:1,
-                ease:"backInOut"
-              }}
-              className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              whileInView={"visible"}
+              viewport={{ once: true, margin: "-200px" }}
+            >
               {services.map((service) => (
                 <motion.div
                   key={service.id}
-                  className="p-6 rounded-lg hover:shadow hover:scale-105 transition duration-300 bg-red-200">
+                  variants={{
+                    hidden: { opacity: 0, y: 20, scale: 0.95 },
+                    visible: { opacity: 1, y: 0, scale: 1 },
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  className="p-6 rounded-lg bg-red-200 transition-shadow hover:shadow-lg"
+                >
                   <div>{service.icon}</div>
                   <h3 className="mt-3 font-semibold text-lg">{service.name}</h3>
                   <p className="mt-2 text-slate-600 text-sm">{service.description}</p>
@@ -110,7 +133,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
         <section id="contact" className="bg-white py-16">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-2xl font-bold">Contact Us</h2>
