@@ -22,27 +22,23 @@ export default function Home() {
           <motion.div
             className="max-w-7xl mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-10"
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             variants={{
-              hidden: { opacity: 0, x: -50 },
+              hidden: {},
               visible: {
-                opacity: 1,
-                x: 0,
                 transition: {
-                  delay: 1,
-                  staggerChildren: 1,
-                  delayChildren: 0.3,
+                  staggerChildren: 0.4,
+                  delayChildren: 0.6,
                 },
               },
             }}
-            whileInView={"visible"}
-            viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div
               className="my-12 flex-1"
               variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0 },
+                visible: { opacity: 1 },
               }}
             >
               <h1 className="text-4xl sm:text-5xl font-extrabold bg-linear-to-r to-slate-500 from-black text-transparent bg-clip-text">
@@ -50,13 +46,13 @@ export default function Home() {
               </h1>
 
               <motion.p
-                className="my-6 text-lg sm:max-w-1/2 bg-linear-to-r to-gray-600 from-black text-transparent bg-clip-text"
+                className="my-6 text-lg sm:max-w-lg bg-linear-to-r to-gray-600 from-black text-transparent bg-clip-text"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum eaque modi non possimus? Quis reprehenderit nihil nisi quia voluptate. Laudantium autem sunt sint possimus!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio obcaecati soluta magni fugiat sapiente autem consectetur, dignissimos architecto dicta perspiciatis. Sapiente minus sit a ex.
               </motion.p>
 
               <motion.div
@@ -66,8 +62,8 @@ export default function Home() {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <Button size={"extra-large"}>Our Services</Button>
-                <Button size={"extra-large"} variant={"secondary"}>
+                <Button size="lg">Our Services</Button>
+                <Button size="lg" variant="secondary">
                   Book Appointment
                 </Button>
               </motion.div>
@@ -82,21 +78,18 @@ export default function Home() {
             <motion.div
               className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-150px" }}
               variants={{
-                hidden: { opacity: 0 },
+                hidden: {},
                 visible: {
-                  opacity: 1,
                   transition: {
-                    delay: 1,
                     ease: "easeInOut",
                     staggerChildren: 0.2,
                     delayChildren: 0.1,
                   },
                 },
               }}
-              whileInView={"visible"}
-              viewport={{ once: true, margin: "-200px" }}
             >
               {services.map((service) => (
                 <motion.div
